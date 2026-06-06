@@ -21,7 +21,7 @@ jobs:
             if [ -f "$markdown_file" ]; then
               filename=$(basename "$markdown_file" .md)
               output_file="galleries/output/${filename}.html"
-              python3 "$(dirname "$0")/convert.py" "$markdown_file" "$output_file" "$filename"
+              python3 .github/workflows/convert.py "$markdown_file" "$output_file" "$filename"
             fi
           done
 
