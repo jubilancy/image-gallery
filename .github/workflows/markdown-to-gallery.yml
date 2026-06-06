@@ -15,12 +15,10 @@ jobs:
 
       - name: Convert Markdown to HTML Galleries
         run: |
-          mkdir -p galleries/output
-
           for markdown_file in galleries/*.md; do
             if [ -f "$markdown_file" ]; then
               filename=$(basename "$markdown_file" .md)
-              output_file="galleries/output/${filename}.html"
+              output_file="${filename}.html"
               python3 .github/workflows/convert.py "$markdown_file" "$output_file" "$filename"
             fi
           done
@@ -29,7 +27,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add galleries/output/
-          git commit -m "Generate gallery HTML files" || echo "No changes to commit"
-          git push
+          git add *.html
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Generate gallery HTML files" && git push)
         continue-on-error: true
