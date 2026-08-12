@@ -1,0 +1,24 @@
+{
+  "name": "pinterest-board",
+  "version": "2.0.0",
+  "description": "Auto-deployed Pinterest-style board with GitHub Actions - Memory optimized with pagination",
+  "private": true,
+  "scripts": {
+    "build": "node build.js",
+    "dev": "node build.js"
+  },
+  "keywords": [
+    "pinterest",
+    "board",
+    "gallery",
+    "csv",
+    "github-pages",
+    "github-actions",
+    "masonry",
+    "pagination",
+    "tags",
+    "categories"
+  ],
+  "author": "",
+  "license": "MIT"
+}

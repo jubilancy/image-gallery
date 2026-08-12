@@ -1,0 +1,520 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  background-color: #ffffff;
+  color: #1a1a1a;
+}
+
+body {
+  line-height: 1.6;
+  background-color: #ffffff;
+}
+
+/* Header */
+header {
+  background-color: #fafafa;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 1.5rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  max-width: 1400px;
+  margin: 0 auto 1rem;
+}
+
+.header-content h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: #767676;
+}
+
+.header-actions {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.search-box {
+  flex: 1;
+  max-width: 300px;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d0d0d0;
+  border-radius: 24px;
+  font-size: 0.95rem;
+  background-color: #f0f0f0;
+  transition: all 150ms ease;
+}
+
+.search-box:focus {
+  outline: none;
+  background-color: #ffffff;
+  border-color: #1a1a1a;
+  box-shadow: 0 0 0 3px rgba(26, 26, 26, 0.1);
+}
+
+.clear-btn,
+.reset-btn {
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border: 1px solid #d0d0d0;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.clear-btn:hover,
+.reset-btn:hover {
+  background-color: #f0f0f0;
+  border-color: #1a1a1a;
+}
+
+/* Filters */
+.filters {
+  max-width: 1400px;
+  margin: 1.5rem auto;
+  padding: 0 2rem;
+  display: flex;
+  gap: 2rem;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filter-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #767676;
+}
+
+.filter-group select {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  background-color: #ffffff;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.filter-group select:focus {
+  outline: none;
+  border-color: #1a1a1a;
+}
+
+/* Main Content */
+main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: 400px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #999;
+  font-size: 1.1rem;
+}
+
+.empty-state code {
+  background-color: #f5f5f5;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  font-family: monospace;
+}
+
+/* Masonry Grid */
+.masonry {
+  column-count: 5;
+  column-gap: 1.5rem;
+}
+
+.pin {
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: all 200ms ease;
+  cursor: pointer;
+}
+
+.pin:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+}
+
+.pin-image-wrapper {
+  width: 100%;
+  background-color: #f5f5f5;
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
+}
+
+.pin-image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  background-color: #f0f0f0;
+}
+
+.pin-image-wrapper img.error {
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+  min-height: 200px;
+}
+
+.pin-content {
+  padding: 1rem;
+}
+
+.pin-category {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-color: #f0f0f0;
+  color: #767676;
+  padding: 0.3rem 0.6rem;
+  border-radius: 3px;
+  margin-bottom: 0.5rem;
+  text-decoration: none;
+  border: none;
+  transition: all 150ms ease;
+}
+
+.pin-category:hover {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.pin-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  color: #1a1a1a;
+  word-break: break-word;
+}
+
+.pin-description {
+  font-size: 0.85rem;
+  color: #767676;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.pin-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.tag {
+  font-size: 0.75rem;
+  background-color: #f5f5f5;
+  color: #1a1a1a;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  text-decoration: none;
+  border: 1px solid #e0e0e0;
+  transition: all 150ms ease;
+  display: inline-block;
+}
+
+.tag:hover {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border-color: #1a1a1a;
+}
+
+.pin-source {
+  font-size: 0.75rem;
+  color: #b0b0b0;
+  margin-bottom: 0.75rem;
+}
+
+.pin-link {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  text-decoration: none;
+  border-bottom: 1px solid #1a1a1a;
+  transition: all 150ms ease;
+}
+
+.pin-link:hover {
+  color: #ff6600;
+  border-color: #ff6600;
+}
+
+/* Pagination */
+.pagination {
+  max-width: 1400px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.page-link {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #1a1a1a;
+  font-size: 0.9rem;
+  transition: all 150ms ease;
+  display: inline-block;
+}
+
+.page-link:hover:not(.disabled):not(.active) {
+  background-color: #f0f0f0;
+  border-color: #1a1a1a;
+}
+
+.page-link.active {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border-color: #1a1a1a;
+  font-weight: 600;
+}
+
+.page-link.disabled {
+  color: #b0b0b0;
+  border-color: #e0e0e0;
+  cursor: not-allowed;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid #e0e0e0;
+  font-size: 0.85rem;
+  color: #999;
+  margin-top: 2rem;
+}
+
+footer a {
+  color: #1a1a1a;
+  text-decoration: none;
+  border-bottom: 1px dotted #1a1a1a;
+}
+
+footer a:hover {
+  border-bottom-style: solid;
+}
+
+/* Toast Notification */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  z-index: 2000;
+  animation: slideIn 200ms ease, slideOut 200ms ease 2.8s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .masonry {
+    column-count: 4;
+    column-gap: 1.25rem;
+  }
+
+  .filters {
+    padding: 0 1.5rem;
+  }
+
+  main {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 1rem 1.5rem;
+  }
+
+  .header-content h1 {
+    font-size: 1.4rem;
+  }
+
+  .header-actions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .search-box {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    padding: 0 1.5rem;
+  }
+
+  .filter-group {
+    width: 100%;
+  }
+
+  .filter-group select {
+    width: 100%;
+  }
+
+  .masonry {
+    column-count: 2;
+    column-gap: 1rem;
+  }
+
+  main {
+    padding: 1rem;
+  }
+
+  .pin {
+    margin-bottom: 1rem;
+  }
+
+  .pin-content {
+    padding: 0.75rem;
+  }
+
+  .pin-title {
+    font-size: 0.95rem;
+  }
+
+  .pin-description {
+    font-size: 0.8rem;
+  }
+
+  .pagination {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .masonry {
+    column-count: 1;
+  }
+
+  header {
+    padding: 1rem;
+  }
+
+  .header-content h1 {
+    font-size: 1.25rem;
+  }
+
+  .header-content {
+    margin-bottom: 0.75rem;
+  }
+
+  .header-actions {
+    flex-direction: column;
+  }
+
+  .search-box {
+    font-size: 0.9rem;
+    width: 100%;
+  }
+
+  .filters {
+    flex-direction: column;
+    padding: 0 1rem;
+  }
+
+  .filter-group select {
+    width: 100%;
+  }
+
+  main {
+    padding: 0.75rem;
+  }
+
+  .pin {
+    margin-bottom: 0.75rem;
+  }
+
+  .pagination {
+    gap: 0.25rem;
+    padding: 0 1rem;
+  }
+
+  .page-link {
+    padding: 0.4rem 0.5rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Loading state */
+.pin.loading {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Filtered out state */
+.pin.hidden {
+  display: none;
+}
