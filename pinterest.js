@@ -80,7 +80,7 @@ function applyFilters() {
   if (resetBtn) resetBtn.style.display = selectedCategory || selectedTag ? 'block' : 'none';
 
   if (visibleCount === 0 && (selectedCategory || selectedTag || searchQuery)) {
-    showToast('no pins match your filters', 2000);
+    showToast(`no pins match your filters`, 2000);
   }
 }
 
