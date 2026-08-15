@@ -1,4 +1,4 @@
-# Pinterest Clone v2 - Memory Optimized with Pagination
+# Pinterest Clone v2: Memory Optimized with Pagination
 
 A static, auto-deployed Pinterest-style board with **15 pins per page**, **tags**, **categories**, and **memory optimization** (solves 1-2GB issue).
 
